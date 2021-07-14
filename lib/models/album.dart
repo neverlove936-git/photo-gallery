@@ -17,7 +17,7 @@ class Album {
   bool? isWriteable;
   ShareInfo? shareInfo;
   String? mediaItemsCount;
-  String coverPhotoBaseUrl;
+  String? coverPhotoBaseUrl;
   String? coverPhotoMediaItemId;
 }
 

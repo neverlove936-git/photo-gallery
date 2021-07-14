@@ -1,6 +1,5 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
+import 'package:photo_gallery/models/album.dart';
 import 'package:photo_gallery/models/list_albums.dart';
 import 'package:photo_gallery/services/dio.dart';
 import 'package:photo_gallery/services/google_sign_in.dart';
@@ -21,7 +20,21 @@ class GooglePhotoApis {
       },
       authHeader: await googleSignInServices.authHeaders!,
     );
-    print(response.data);
     return ListAlbums.fromJson(response.data);
+  }
+
+  Future<Album> createAlbum(String title) async {
+    final Response response = await dioService(
+      path: ApiResource.albums,
+      method: ApiResource.post,
+      body: {
+        'album': {
+          'title': title,
+        },
+      },
+      authHeader: await googleSignInServices.authHeaders!,
+    );
+
+    return Album.fromJson(response.data);
   }
 }
