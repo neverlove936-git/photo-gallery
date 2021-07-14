@@ -1,0 +1,48 @@
+name: CI
+
+on: pull_request
+
+jobs:
+  lint:
+    env:
+      DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      FLUTTER_VERSION: '2.0.0'
+    name: Run linter
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 100
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.6.6'
+      - name: Cache bundle
+        uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('Gemfile') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+      - name: Cache flutter sdk
+        uses: actions/cache@v2
+        with:
+          path: /Users/runner/hostedtoolcache/flutter
+          key: ${{ runner.os }}-flutter-${{ env.FLUTTER_VERSION }}
+          restore-keys: |
+            ${{ runner.os }}-flutter-
+      - name: Flutter action
+        uses: subosito/flutter-action@v1.4.0
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+      - name: Install bundler
+        run: gem install bundler:2.1.4
+      - name: Bundle install
+        run: |
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+      - name: Run flutter analyze
+        id: analyze
+        run: flutter analyze > flutter_analyze_report.txt
+        continue-on-error: true
+      - name: Run Danger
+        run: bundle exec danger
