@@ -11,17 +11,13 @@ Album _$AlbumFromJson(Map<String, dynamic> json) {
     json['id'] as String,
     json['title'] as String,
     json['productUrl'] as String,
-    json['isWriteable'] == null ? null : json['isWriteable'] as bool,
+    json['isWriteable'] as bool?,
     json['shareInfo'] == null
         ? null
         : ShareInfo.fromJson(json['shareInfo'] as Map<String, dynamic>),
-    json['mediaItemsCount'] == null ? null : json['mediaItemsCount'] as String,
-    json['coverPhotoBaseUrl'] == null
-        ? null
-        : json['coverPhotoBaseUrl'] as String,
-    json['coverPhotoMediaItemId'] == null
-        ? null
-        : json['coverPhotoMediaItemId'] as String,
+    json['mediaItemsCount'] as String?,
+    json['coverPhotoBaseUrl'] as String?,
+    json['coverPhotoMediaItemId'] as String?,
   );
 }
 

@@ -58,43 +58,46 @@ class ListAlbumsView extends StatelessWidget {
   }
 
   Widget _albumItem(Album? item) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Expanded(
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              image: DecorationImage(
-                fit: BoxFit.fill,
-                image: NetworkImage(item!.coverPhotoBaseUrl!),
+    return GestureDetector(
+      onTap: () => Get.toNamed(Routes.albumDetail, arguments: item),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                image: DecorationImage(
+                  fit: BoxFit.fill,
+                  image: NetworkImage(item!.coverPhotoBaseUrl!),
+                ),
               ),
             ),
           ),
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        Text(
-          item.title,
-          style: TextThemeStyles.defaultTextBold,
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        Text(
-          item.mediaItemsCount != null
-              ? 'albumItemCount'.trParams(
-                  {
-                    'itemCount': item.mediaItemsCount!,
-                  },
-                )!
-              : '',
-          style: TextThemeStyles.defaultText.copyWith(
-            fontSize: 16,
+          SizedBox(
+            height: 10,
           ),
-        ),
-      ],
+          Text(
+            item.title,
+            style: TextThemeStyles.defaultTextBold,
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Text(
+            item.mediaItemsCount != null
+                ? 'albumItemCount'.trParams(
+                    {
+                      'itemCount': item.mediaItemsCount!,
+                    },
+                  )!
+                : '',
+            style: TextThemeStyles.defaultText.copyWith(
+              fontSize: 16,
+            ),
+          ),
+        ],
+      ),
     );
   }
 

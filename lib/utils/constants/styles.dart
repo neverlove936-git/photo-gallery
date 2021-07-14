@@ -6,7 +6,7 @@ class TextThemeStyles {
     fontSize: 13.0,
   );
   static const appBarTitle = TextStyle(
-    color: TextThemeColors.black,
+    color: TextThemeColors.textBlack,
     fontSize: 24.0,
     fontWeight: FontWeight.w600,
     height: 1,
@@ -21,16 +21,16 @@ class TextThemeStyles {
   );
   static const defaultText = TextStyle(
     fontSize: 18,
-    color: TextThemeColors.black,
+    color: TextThemeColors.textBlack,
   );
   static const defaultTextBold = TextStyle(
     fontSize: 20,
-    color: TextThemeColors.black,
+    color: TextThemeColors.textBlack,
     fontWeight: FontWeight.w600,
   );
   static const dialogTitle = TextStyle(
     fontSize: 17,
-    color: TextThemeColors.black,
+    color: TextThemeColors.textBlack,
     fontWeight: FontWeight.w600,
   );
 }

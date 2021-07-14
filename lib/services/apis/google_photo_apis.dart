@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:photo_gallery/models/album.dart';
 import 'package:photo_gallery/models/list_albums.dart';
+import 'package:photo_gallery/models/list_media_item.dart';
 import 'package:photo_gallery/services/dio.dart';
 import 'package:photo_gallery/services/google_sign_in.dart';
 import 'package:photo_gallery/utils/constants/index.dart';
@@ -36,5 +37,17 @@ class GooglePhotoApis {
     );
 
     return Album.fromJson(response.data);
+  }
+
+  Future<ListMediaItems> searchMediaItems(String albumId) async {
+    final Response response = await dioService(
+      path: ApiResource.searchMedia,
+      method: ApiResource.post,
+      body: {
+        'albumId': albumId,
+      },
+      authHeader: await googleSignInServices.authHeaders!,
+    );
+    return ListMediaItems.fromJson(response.data);
   }
 }
