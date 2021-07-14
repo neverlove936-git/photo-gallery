@@ -10,6 +10,9 @@ ThemeData buildThemeData() {
       textTheme: TextTheme(
         headline6: TextThemeStyles.appBarTitle,
       ),
+      iconTheme: IconThemeData(
+        color: Colors.black,
+      ),
       elevation: 0,
       brightness: Brightness.light,
     ),

@@ -16,7 +16,9 @@ Album _$AlbumFromJson(Map<String, dynamic> json) {
         ? null
         : ShareInfo.fromJson(json['shareInfo'] as Map<String, dynamic>),
     json['mediaItemsCount'] == null ? null : json['mediaItemsCount'] as String,
-    json['coverPhotoBaseUrl'] as String,
+    json['coverPhotoBaseUrl'] == null
+        ? null
+        : json['coverPhotoBaseUrl'] as String,
     json['coverPhotoMediaItemId'] == null
         ? null
         : json['coverPhotoMediaItemId'] as String,
