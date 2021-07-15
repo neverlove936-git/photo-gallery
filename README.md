@@ -31,7 +31,7 @@ https://drive.google.com/file/d/1nMYDMcLSpdytAH50FlGf_nQFLkj4x796/view?usp=shari
 - Refresh the oath2 token. Now the token has 30minut expire time => Solution store refresh time into local storage and compre if it expire and refresh token.
 - Handle multiple upload file
 - Improve gallery view
-- Implement feature share album, media item, dowload image
+- Implement feature share album, media item, dowload image, remove album, media item
 
 ## Evironment
 | Tool name | version |
