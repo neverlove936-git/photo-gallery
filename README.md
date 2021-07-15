@@ -1,6 +1,21 @@
-# flutter GetX boilerplate
+# Photo Gallery
 
-A new Flutter project.
+A new Flutter project use Google Photo Api to create Gallery Photo.
+
+# Summary
+- Config firebase and Set up the Google Photos Library API
+- Using Google Photo Apis to implement features Create Album, Get List Album, Album detail, Upload image To Album, View Image Detail 
+- Use google_sign_in to sign in, sign out for get oath2 token.
+- Use getX
+
+# Demo
+
+# Improvement
+- Handle on Error
+- Refresh the oath2 token. Now the token has 30minut expire time => Solution store refresh time into local storage and compre if it expire and refresh token.
+- Handle multiple upload file
+- Improve gallery view
+
 
 ## Folder Structure
 ```
