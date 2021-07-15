@@ -7,6 +7,7 @@ A new Flutter project use Google Photo Api to create Gallery Photo.
 - Using Google Photo Apis to implement features Create Album, Get List Album, Album detail, Upload image To Album, View Image Detail 
 - Use google_sign_in to sign in, sign out for get oath2 token.
 - Use getX
+- Not testing on IOS device yet.
 
 # Demo
 
