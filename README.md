@@ -9,6 +9,11 @@ A new Flutter project use Google Photo Api to create Gallery Photo.
 - Use getX
 - Not testing on IOS device yet.
 
+# Demo video
+https://drive.google.com/file/d/114bMfUm2Rx1kFN-Lmfi9sR6i0Ez6SGew/view
+
+# Apk file for Android
+https://drive.google.com/file/d/1nMYDMcLSpdytAH50FlGf_nQFLkj4x796/view?usp=sharing
 # Screenshot
 - Home
 ![Home](/assets/images/documents/home.png?raw=true "Home")
