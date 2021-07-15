@@ -10,12 +10,12 @@ A new Flutter project use Google Photo Api to create Gallery Photo.
 
 # Demo
 
-# Improvement
-- Handle on Error
+# For future improvement
+- Handle error exception (Display error).
 - Refresh the oath2 token. Now the token has 30minut expire time => Solution store refresh time into local storage and compre if it expire and refresh token.
 - Handle multiple upload file
 - Improve gallery view
-
+- Implement feature share album, media item, dowload image
 
 ## Folder Structure
 ```
