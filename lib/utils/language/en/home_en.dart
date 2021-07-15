@@ -3,4 +3,5 @@ const Map<String, String> homeEn = {
   'albumItemCount': '@itemCount item',
   'signInGoogle': 'Connect with Google Photos',
   'newAlbum': 'New Album',
+  'confirmLogOut': 'Do you want to sign out?',
 };

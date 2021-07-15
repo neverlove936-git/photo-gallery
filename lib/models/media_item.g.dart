@@ -10,7 +10,7 @@ MediaItem _$MediaItemFromJson(Map<String, dynamic> json) {
   return MediaItem(
     json['id'] as String,
     json['productUrl'] as String,
-    json['baseUrl'] as String,
+    json['baseUrl'] as String?,
     json['mimeType'] as String,
     json['filename'] as String,
     MediaMetadata.fromJson(json['mediaMetadata'] as Map<String, dynamic>),

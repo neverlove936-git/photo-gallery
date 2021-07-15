@@ -33,6 +33,9 @@ class AlbumDetail extends StatelessWidget {
         style: TextThemeStyles.appBarTitle,
       ),
       centerTitle: true,
+      actions: [
+        _uploadImageButton(),
+      ],
     );
   }
 
@@ -41,9 +44,41 @@ class AlbumDetail extends StatelessWidget {
       () {
         return controller.isLoadingPage.value
             ? LoadingIndicator()
-            : ListImage(
-                listMediaItems: controller.listMediaItems.value,
-              );
+            : controller.listMediaItems.value.mediaItems != null
+                ? ListImage(
+                    listMediaItems: controller.listMediaItems.value,
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        'noImageMessage'.tr,
+                        style: TextThemeStyles.defaultTextBold,
+                      ),
+                      Center(
+                        child: DefaultIconButton(
+                          icon: Icons.add_a_photo,
+                          onPressed: () {
+                            controller.pickImage();
+                          },
+                          label: Text(
+                            'Add Image',
+                            style: TextThemeStyles.defaultTextBold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+      },
+    );
+  }
+
+  Widget _uploadImageButton() {
+    return IconButton(
+      icon: Icon(Icons.add_a_photo),
+      onPressed: () {
+        controller.pickImage();
       },
     );
   }

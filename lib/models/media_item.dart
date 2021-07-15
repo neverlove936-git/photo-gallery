@@ -20,7 +20,7 @@ class MediaItem {
 
   String id;
   String productUrl;
-  String baseUrl;
+  String? baseUrl;
   String mimeType;
   String filename;
   MediaMetadata mediaMetadata;

@@ -15,11 +15,13 @@ class ListImage extends StatelessWidget {
         final item = listMediaItems?.mediaItems?[index];
         return Container(
           decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: NetworkImage(
-                    item!.baseUrl,
-                  ),
-                  fit: BoxFit.cover)),
+            image: DecorationImage(
+              image: NetworkImage(
+                item!.baseUrl ?? item.productUrl,
+              ),
+              fit: BoxFit.cover,
+            ),
+          ),
         );
       },
       itemCount: listMediaItems?.mediaItems?.length,

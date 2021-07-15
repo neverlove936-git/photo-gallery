@@ -1,10 +1,15 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:photo_gallery/models/album.dart';
 import 'package:photo_gallery/models/list_albums.dart';
 import 'package:photo_gallery/models/list_media_item.dart';
+import 'package:photo_gallery/models/new_media_item.dart';
 import 'package:photo_gallery/services/dio.dart';
 import 'package:photo_gallery/services/google_sign_in.dart';
 import 'package:photo_gallery/utils/constants/index.dart';
+import 'package:path/path.dart' as path;
 
 class GooglePhotoApis {
   /// Resource
@@ -17,7 +22,7 @@ class GooglePhotoApis {
       path: ApiResource.albums,
       params: {
         'pageSize': 50,
-        'excludeNonAppCreatedData': false,
+        'excludeNonAppCreatedData': true,
       },
       authHeader: await googleSignInServices.authHeaders!,
     );
@@ -49,5 +54,41 @@ class GooglePhotoApis {
       authHeader: await googleSignInServices.authHeaders!,
     );
     return ListMediaItems.fromJson(response.data);
+  }
+
+  /// https://developers.google.com/photos/library/guides/upload-media
+
+  Future<String> uploadPicture(File image) async {
+    // Get the filename of the image
+    final filename = path.basename(image.path);
+    final binaryImage = await image.readAsBytes();
+
+    final response = await dioService(
+      method: ApiResource.post,
+      authHeader: {
+        ...await googleSignInServices.authHeaders!,
+        'Content-type': 'application/octet-stream',
+        'X-Goog-Upload-Protocol': 'raw',
+        'X-Goog-Upload-File-Name': filename,
+      },
+      path: ApiResource.uploads,
+      body: Stream.fromIterable(binaryImage.map((e) => [e])),
+    );
+    return response.data;
+  }
+
+  Future<BatchCreateMediaItemsResponse> batchCreateMediaItems(
+      BatchCreateMediaItemsRequest request) async {
+    final response = await dioService(
+      method: ApiResource.post,
+      authHeader: {
+        ...await googleSignInServices.authHeaders!,
+        'Content-type': 'application/json',
+      },
+      path: ApiResource.batchCreate,
+      body: jsonEncode(request),
+    );
+
+    return BatchCreateMediaItemsResponse.fromJson(response.data);
   }
 }

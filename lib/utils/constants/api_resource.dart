@@ -8,4 +8,6 @@ class ApiResource {
   /// Google Photo Path
   static const albums = 'albums';
   static const searchMedia = 'mediaItems:search';
+  static const uploads = 'uploads';
+  static const batchCreate = 'mediaItems:batchCreate';
 }
