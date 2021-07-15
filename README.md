@@ -9,14 +9,58 @@ A new Flutter project use Google Photo Api to create Gallery Photo.
 - Use getX
 - Not testing on IOS device yet.
 
-# Demo
-
+# Screenshot
+- Home
+![Home](/assets/images/documents/home.png?raw=true "Home")
+![Home after sign in](/assets/images/documents/home_after_sign_in.png?raw=true "Home after sign in")
+- Sign in
+![Sign in](/assets/images/documents/sign_in.png?raw=true "Sign in")
+- Album detail
+![Album detail](/assets/images/documents/album_detail.png?raw=true "Album detail")
+- Upload
+![Pick Image](/assets/images/documents/pick_image.png?raw=true "Pick Image")
+![Upload image to album](/assets/images/documents/upload_image_to_album.png?raw=true "Upload image to album")
+![Album after upload](/assets/images/documents/album_after_upload.png?raw=true "Album after upload")
 # For future improvement
 - Handle error exception (Display error).
 - Refresh the oath2 token. Now the token has 30minut expire time => Solution store refresh time into local storage and compre if it expire and refresh token.
 - Handle multiple upload file
 - Improve gallery view
 - Implement feature share album, media item, dowload image
+
+## Evironment
+| Tool name | version |
+----|----
+| Android Studio | 4.1 |
+| Xcode | 11.5 |
+
+| Programming language | version
+----|----
+| Dart | 2.12.3 |
+
+| Framework | version |
+----|----
+| Flutter | 2.0.5 (stable) |
+| Cocoa Pod | 1.10.0 |
+----|----
+| VS Code | 1.58.0
+
+#### Build Android:
+- At project root folder, run below command:
+```
+- Build development: flutter build apk --release --flavor development -t lib/main_development.dart
+- Build staging: flutter build apk --release --flavor staging -t lib/main_staging.dart
+- Build production: flutter build apk --release --flavor production -t lib/main_production.dart
+```
+- The .apk file will be save at `Built build/app/outputs/flutter-apk/*.apk`
+
+## Config debug for VSCode
+- Coppy `launch.json` file content on project root folder to `.vscode/launch.json` file.
+- Select Environment
+![Choose environment](/assets/images/documents/choose_environment.png?raw=true "Choose environment")
+- Run Debug
+![Run debug](/assets/images/documents/run_debug.png?raw=true "Run debug")
+
 
 ## Folder Structure
 ```
