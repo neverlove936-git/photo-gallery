@@ -60,8 +60,8 @@ class CreateAlbumPage extends StatelessWidget {
                           onChanged: (_) {
                             createAlbumController.checkValidButton();
                           },
-                          decoration: const InputDecoration(
-                            hintText: 'Album Name',
+                          decoration: InputDecoration(
+                            hintText: 'albumName'.tr,
                           ),
                         ),
                       ),
@@ -70,8 +70,8 @@ class CreateAlbumPage extends StatelessWidget {
                           vertical: 15,
                           horizontal: 15,
                         ),
-                        child: const Text(
-                          'This will create a album in your Google Photos account',
+                        child: Text(
+                          'createAlbumNote'.tr,
                           style: TextStyle(
                             color: Colors.grey,
                           ),
@@ -85,7 +85,10 @@ class CreateAlbumPage extends StatelessWidget {
                               : () {
                                   createAlbumController.createAlbum();
                                 },
-                          label: const Text('Submit'),
+                          label: Text(
+                            'btnSubmit'.tr,
+                            style: TextThemeStyles.defaultTextBold,
+                          ),
                         ),
                       ),
                     ],

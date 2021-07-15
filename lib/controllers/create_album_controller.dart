@@ -1,4 +1,6 @@
 import 'package:photo_gallery/controllers/home_controller.dart';
+import 'package:photo_gallery/models/album.dart';
+import 'package:photo_gallery/routes/routes.dart';
 import 'package:photo_gallery/services/apis/google_photo_apis.dart';
 import 'package:photo_gallery/utils/constants/index.dart';
 
@@ -12,18 +14,22 @@ class CreateAlbumController extends GetxController {
   Future<void> createAlbum() async {
     // Display Loading
     isLoading.value = true;
+    Album newAlbum;
     try {
-      await GooglePhotoApis().createAlbum(albumFormFieldController.text.trim());
+      newAlbum = await GooglePhotoApis()
+          .createAlbum(albumFormFieldController.text.trim());
     } catch (err) {
       print(err);
       // Remove Loading
       isLoading.value = false;
       return;
     }
-    await homeController.fetchListAlbums();
     // Remove Loading
     isLoading.value = false;
-    Get.back();
+    // ignore: unawaited_futures
+    homeController.fetchListAlbums();
+    // ignore: unawaited_futures
+    Get.offAndToNamed(Routes.albumDetail, arguments: newAlbum);
   }
 
   void checkValidButton() {

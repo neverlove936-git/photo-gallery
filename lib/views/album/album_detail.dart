@@ -63,7 +63,7 @@ class AlbumDetail extends StatelessWidget {
                             controller.pickImage();
                           },
                           label: Text(
-                            'Add Image',
+                            'addImage'.tr,
                             style: TextThemeStyles.defaultTextBold,
                           ),
                         ),

@@ -9,6 +9,7 @@ import 'package:photo_gallery/models/new_media_item.dart';
 import 'package:photo_gallery/services/apis/google_photo_apis.dart';
 import 'package:photo_gallery/utils/constants/index.dart';
 import 'package:path/path.dart' as path;
+import 'package:photo_gallery/views/widgets/loading_dialog.dart';
 
 class AlbumDetailController extends GetxController {
   final isLoadingPage = false.obs;
@@ -58,6 +59,12 @@ class AlbumDetailController extends GetxController {
   Future<void> uploadImage(File pickedFile) async {
     // Get upload token after upload the image to Google Photos success.
     String uploadToken;
+    // Display loading
+    // ignore: unawaited_futures
+    Get.dialog(
+      LoadingDialog(),
+      barrierDismissible: false,
+    );
     try {
       uploadToken = await GooglePhotoApis().uploadPicture(pickedFile);
     } catch (err) {
@@ -79,6 +86,8 @@ class AlbumDetailController extends GetxController {
     }
 
     hasUploaded = true;
+    // Close loading
+    Get.back();
 
     /// Refresh to get new image from album.
     try {

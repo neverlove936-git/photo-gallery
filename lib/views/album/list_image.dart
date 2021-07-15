@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:photo_gallery/models/list_media_item.dart';
+import 'package:photo_gallery/routes/routes.dart';
+import 'package:photo_gallery/utils/constants/index.dart';
 
 class ListImage extends StatelessWidget {
   ListImage({Key? key, this.listMediaItems}) : super(key: key);
@@ -13,13 +15,17 @@ class ListImage extends StatelessWidget {
       crossAxisCount: 4,
       itemBuilder: (context, index) {
         final item = listMediaItems?.mediaItems?[index];
-        return Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: NetworkImage(
-                item!.baseUrl ?? item.productUrl,
+        return GestureDetector(
+          onTap: () => Get.toNamed(Routes.imageDetail,
+              arguments: item!.baseUrl ?? item.productUrl),
+          child: Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: NetworkImage(
+                  item!.baseUrl ?? item.productUrl,
+                ),
+                fit: BoxFit.cover,
               ),
-              fit: BoxFit.cover,
             ),
           ),
         );
