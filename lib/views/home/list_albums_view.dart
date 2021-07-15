@@ -43,7 +43,9 @@ class ListAlbumsView extends StatelessWidget {
               crossAxisCount: 2,
               childAspectRatio: 2 / 3,
             ),
-            itemCount: controller.listAlbums.value.albums!.length + 1,
+            itemCount: controller.listAlbums.value.albums != null
+                ? controller.listAlbums.value.albums!.length + 1
+                : 1,
             itemBuilder: (context, index) {
               if (index == 0) {
                 return _createAlbumItem();
