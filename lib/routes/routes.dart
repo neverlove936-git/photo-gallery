@@ -3,4 +3,5 @@ class Routes {
   static const splashScreen = '/splash-screen';
   static const createAlbum = '/create-album';
   static const albumDetail = '/album-detail';
+  static const imageDetail = '/image-detail';
 }
