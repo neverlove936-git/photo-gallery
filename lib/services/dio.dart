@@ -18,10 +18,8 @@ Future dioService({
   String path = '',
   Map<String, dynamic> params = const {},
   Map<String, String> authHeader = const {},
-  Map<String, dynamic> body = const {},
+  dynamic body = const {},
   CancelToken? tokenCancel,
-  String contentType = 'application/json',
-  bool hasHeaderContentType = true,
   String savePathDownload = '',
   Function(int received, int total)? onReceiveProgress,
 }) async {

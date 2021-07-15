@@ -25,6 +25,15 @@ class Home extends StatelessWidget {
       ),
       centerTitle: true,
       leading: SizedBox(),
+      actions: [
+        if (controller.isLoggedIn.value)
+          IconButton(
+            icon: Icon(Icons.logout),
+            onPressed: () {
+              controller.logOut();
+            },
+          ),
+      ],
     );
   }
 
