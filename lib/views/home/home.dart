@@ -17,23 +17,27 @@ class Home extends StatelessWidget {
   }
 
   Widget _homeAppBar() {
-    return AppBar(
-      elevation: 5,
-      title: Text(
-        'homeTitle'.tr,
-        style: TextThemeStyles.appBarTitle,
-      ),
-      centerTitle: true,
-      leading: SizedBox(),
-      actions: [
-        if (controller.isLoggedIn.value)
-          IconButton(
-            icon: Icon(Icons.logout),
-            onPressed: () {
-              controller.logOut();
-            },
+    return Obx(
+      () {
+        return AppBar(
+          elevation: 5,
+          title: Text(
+            'homeTitle'.tr,
+            style: TextThemeStyles.appBarTitle,
           ),
-      ],
+          centerTitle: true,
+          leading: SizedBox(),
+          actions: [
+            if (controller.isLoggedIn.value)
+              IconButton(
+                icon: Icon(Icons.logout),
+                onPressed: () {
+                  controller.logOut();
+                },
+              ),
+          ],
+        );
+      },
     );
   }
 
