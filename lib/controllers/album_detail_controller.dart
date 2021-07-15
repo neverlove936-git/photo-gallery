@@ -63,7 +63,7 @@ class AlbumDetailController extends GetxController {
     // ignore: unawaited_futures
     Get.dialog(
       LoadingDialog(),
-      barrierDismissible: true,
+      barrierDismissible: false,
     );
     try {
       uploadToken = await GooglePhotoApis().uploadPicture(pickedFile);
